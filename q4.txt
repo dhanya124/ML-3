@@ -11,8 +11,9 @@ Total time taken = O(N*F*K)+O(N*K) = O(N*F*K) per iteration
 
 
 
-
 Prediction:
 Calculating X * W takes O(N*F*K) time
 Calculating softmax takes O(N*K) time 
 Total time taken = O(N*F*K)+O(N*K) = O(N*F*K) 
+
+space complexity = O(N * F)+O(N)+O(F*K)
