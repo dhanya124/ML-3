@@ -1,6 +1,8 @@
 import numpy as np 
 import pandas as pd 
 from sklearn.datasets import load_digits 
+from sklearn.model_selection import KFold 
+from sklearn.metrics import accuracy_score
 from sklearn import preprocessing
 from NN import fcmlp
 
@@ -23,14 +25,17 @@ data=scaler.fit_transform(data)
 labels=np.matrix(labels).T
 
 
-print(labels.shape)
-print("----------")
-nn1=fcmlp(10,0.01,data,labels,[1],['relu'])
-nn1.fit()
+k = 3
+kf = KFold(n_splits=k, random_state=None)
+errors=[]
+for train_index , test_index in kf.split(data):
+    X_train , X_test = data[train_index,:],data[test_index,:]
+    y_train , y_test = labels[train_index] , labels[test_index]
+    nn1 = fcmlp(10,0.01,data,labels,[1],['relu'])
+    nn1.fit() 
+    y_hat = nn1.predict(X_test)
 
-y_hat=nn1.predict()
-print(y_hat)
-# print(nn1.weights)
-# print(labels)
+    errors.append(rmse(y_hat,y_test))
 
-print(rmse(y_hat,labels))
+print(errors)
+
