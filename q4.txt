@@ -1,0 +1,18 @@
+X is input matrix of size N X F
+y is ouput matrix of size N 
+Assuming number of classes in the data are k
+W is the weight matrix of size F x K
+
+Learning:
+Calculating X * W takes O(N*F*K) time
+Calculating softmax takes O(N*K) time 
+updating weights takes O(N*F*K) time
+Total time taken = O(N*F*K)+O(N*K) = O(N*F*K) per iteration
+
+
+
+
+Prediction:
+Calculating X * W takes O(N*F*K) time
+Calculating softmax takes O(N*K) time 
+Total time taken = O(N*F*K)+O(N*K) = O(N*F*K) 
