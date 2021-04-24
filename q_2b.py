@@ -71,3 +71,6 @@ for train_idx , test_idx in kf_out.split(X):
     model.fit_L2_regularized(X_train, y_train,lamda=best_parameter) 
     y_hat = model.predict(X_test)
     accuracy_final += accuracy((y_hat),(y_test))
+
+print(accuracy_final)
+print(best_parameter)
